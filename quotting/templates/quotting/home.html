@@ -1,0 +1,40 @@
+{% load staticfiles %}
+<html>
+<head>
+  <link rel="stylesheet" href="{% static 'css/quotting.css' %}">
+</head>
+<body>
+  <section>
+  <div class="tav">
+     <table>
+        <caption>Frequency Table</caption>
+<thead>
+    <tr>
+        <th>Word</th>
+        <th>Frequency</th>
+    </tr>
+</thead>
+<tbody>
+     {% for key, value in fr %}
+    <tr>
+        <td>{{ key }}</td>
+        <td>{{ value }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+<div class="container">
+ <div id="word-cloud"></div>
+</div>
+</section>
+<script type="text/javascript">
+    var fr = {}
+    {% for key,value in fr %}
+    fr['{{key|safe}}']='{{value|safe}}'
+    {%endfor%}
+</script>
+<script src="{% static 'js/design.js' %}">
+</script>
+</body>
+</html>
